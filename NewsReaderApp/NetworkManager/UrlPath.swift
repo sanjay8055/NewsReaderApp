@@ -9,7 +9,7 @@ import Foundation
 
 struct UrlPath {
     
-    static private let apiKey = "bc980d6ed9a946d9aa7862978a6d6c2d"
+    static private let apiKey = "bc980d6ed9a946d9aa7862978a6d6c2d" //later move to secure storage
     static private let baseUrl = "https://newsapi.org/v2/top-headlines?"
     static private let language = "&language=en"
 

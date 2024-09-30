@@ -6,13 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct BookMarksView: View {
     
-    @EnvironmentObject var articleBookmarkVM: NewsBookMarkViewModel
     @State var searchText: String = ""
+    @EnvironmentObject var bookmarsViewModel: BookMarksViewModel
     
-    var body: some View {        
+    var body: some View {
         NavigationView {
             NewsArticleListView(articles: articles)
                 .overlay(overlayView(isEmpty: articles.isEmpty))
@@ -21,15 +22,12 @@ struct BookMarksView: View {
         .searchable(text: $searchText)
     }
     
-    private var articles: [Article] {
-        if searchText.isEmpty {
-            return articleBookmarkVM.bookmarks
+    private var articles: [ArticleModel] {
+        if !searchText.isEmpty {
+           return bookmarsViewModel.search(searchText: searchText)
+        } else {
+            return bookmarsViewModel.bookmarks
         }
-        return articleBookmarkVM.bookmarks
-            .filter {
-                $0.title.lowercased().contains(searchText.lowercased()) ||
-                ($0.description ?? "").lowercased().contains(searchText.lowercased())
-            }
     }
     
     @ViewBuilder
@@ -40,6 +38,6 @@ struct BookMarksView: View {
     }
 }
 
-#Preview {
-    BookMarksView()
-}
+//#Preview {
+//    BookMarksView()
+//}

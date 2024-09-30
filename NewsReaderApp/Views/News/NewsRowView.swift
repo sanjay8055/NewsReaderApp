@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct NewsRowView: View {
     
-    let article: Article
-    @EnvironmentObject var newsBookmarkViewModel: NewsBookMarkViewModel
+    let article: ArticleModel
+    @EnvironmentObject var newsBookmarkViewModel: BookMarksViewModel
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -19,7 +20,7 @@ struct NewsRowView: View {
                 .font(.headline)
                 .lineLimit(2)
             
-            if let description = article.description {
+            if let description = article.descriptions {
                 Text(description)
                     .font(.subheadline)
                     .lineLimit(3)
@@ -45,12 +46,12 @@ struct NewsRowView: View {
         Button {
             toggleBookmark(for: article)
         } label: {
-            Image(systemName: newsBookmarkViewModel.isBookmarked(for: article) ? "bookmark.fill" : "bookmark")
+           Image(systemName: newsBookmarkViewModel.isBookmarked(for: article) ? "bookmark.fill" : "bookmark")
         }
         .buttonStyle(.bordered)
     }
     
-    private func toggleBookmark(for article: Article) {
+    private func toggleBookmark(for article: ArticleModel) {
         if newsBookmarkViewModel.isBookmarked(for: article) {
             newsBookmarkViewModel.removeBookmark(for: article)
         } else {
@@ -60,6 +61,6 @@ struct NewsRowView: View {
 }
 
 
-#Preview {
-    NewsRowView(article: Article.previewData[0])
-}
+//#Preview {
+    //NewsRowView(article: Article.previewData[0])
+//}

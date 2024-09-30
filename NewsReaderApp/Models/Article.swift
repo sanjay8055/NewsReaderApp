@@ -58,7 +58,7 @@ extension Article: Identifiable { }
 
 extension Article {
     static let mockresponseFile = "newsResponse"
-    static var previewData: [Article] {
+    static var previewData: [ArticleModel] {
         if let bundleUrl = Bundle.main.url(forResource: mockresponseFile, withExtension: "json"),
            let data = try? Data(contentsOf: bundleUrl) {
             let jsonDecoder = JSONDecoder()

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewsArticleListView: View {
     
-    let articles: [Article]
+    let articles: [ArticleModel]
     
     var body: some View {
         List {
@@ -20,8 +20,6 @@ struct NewsArticleListView: View {
                             NewsDetailView(article: article)
                         }.opacity(0)
                     )
-
-              
                 
             }
             .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
@@ -31,6 +29,6 @@ struct NewsArticleListView: View {
     }
 }
 
-#Preview {
-    NewsArticleListView(articles: Article.previewData)
-}
+//#Preview {
+//    NewsArticleListView(articles: Article.previewData)
+//}

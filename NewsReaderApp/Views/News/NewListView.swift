@@ -45,7 +45,7 @@ struct NewListView: View {
         }
     }
     
-    private var articles: [Article] {
+    private var articles: [ArticleModel] {
         if case let .success(articles) = articleNewsViewModel.phase {
             return articles
         } else {

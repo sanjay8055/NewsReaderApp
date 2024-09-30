@@ -16,11 +16,11 @@ enum DataFetchPhase<T> {
 @MainActor
 class NewsViewModel: ObservableObject {
     
-    @Published var phase = DataFetchPhase<[Article]>.empty
+    @Published var phase = DataFetchPhase<[ArticleModel]>.empty
     private let newsAPI: NewsAPIServiceProtocol
     @Published var category: Category
     
-    init(articles: [Article]? = nil, 
+    init(articles: [ArticleModel]? = nil, 
          selectedCategory: Category = .business, 
          newsAPi: NewsAPIServiceProtocol = NewsAPISerVice()) {
         if let articles = articles {

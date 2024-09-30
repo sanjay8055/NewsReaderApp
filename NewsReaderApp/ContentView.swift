@@ -7,20 +7,29 @@
 
 import SwiftUI
 
+enum Screens: String {
+    case News
+    case Bookmarks
+}
+
 struct ContentView: View {
+    @Environment(\.modelContext) private var context
+
     var body: some View {
         TabView {
             NewListView()
                 .tabItem {
-                    Label("News", systemImage: "newspaper")
+                    Label(Screens.News.rawValue, systemImage: "newspaper")
                 }
-            
+
             BookMarksView()
                 .tabItem {
-                    Label("Bookmarks", systemImage: "bookmark")
+                    Label(Screens.Bookmarks.rawValue, systemImage: "bookmark")
                 }
+
         }
-        
+        .environmentObject(BookMarksViewModel(modelContext: context))
+
     }
 }
 

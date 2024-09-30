@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NewsDetailView: View {
-    let article: Article
+    let article: ArticleModel
 
     var body: some View {
         ScrollView {
@@ -51,7 +51,7 @@ struct NewsDetailView: View {
                     Text(article.title)
                         .font(.headline)
                     
-                    if let description = article.description {
+                    if let description = article.descriptions {
                         Text(description)
                             .font(.subheadline)
                     }
@@ -69,10 +69,10 @@ struct NewsDetailView: View {
     }
 }
 
-#Preview {
-    if let article = Article.previewData.first {
-        NewsDetailView(article: article)
-    } else {
-        EmptyView()
-    }
-}
+//#Preview {
+//    if let article = Article.previewData.first {
+//        NewsDetailView(article: article)
+//    } else {
+//        EmptyView()
+//    }
+//}
